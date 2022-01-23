@@ -23,9 +23,13 @@
     SKView * skView = (SKView *)self.view;
 //    skView.showsFPS = YES;
 //    skView.showsNodeCount = YES;
-    
+//    skView.showsPhysics = YES;
+//    skView.showsFields = YES;
     // Create and configure the scene.
-    MMMyScene * scene = [MMMyScene sceneWithSize:skView.bounds.size];
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;    
+    CGFloat height = (screenSize.height / screenSize.width) * 320.0f;
+    CGSize sceneSize = CGSizeMake(320.0f, height);
+    MMMyScene * scene = [MMMyScene sceneWithSize:sceneSize];
     scene.sceneDelegate = self;
     scene.scaleMode = SKSceneScaleModeAspectFill;
     

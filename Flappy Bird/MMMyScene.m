@@ -8,14 +8,10 @@
 #import "MMMyScene.h"
 #import "MMAtlas.h"
 #import "MMGlobal.h"
-//#import "YMCPhysicsDebugger.h"
 #import "MMGameOverUI.h"
-//#import "Flurry.h"
 #import "OALSimpleAudio.h"
-//#import "Chartboost.h"
 
-#define isiPhone5  ([[UIScreen mainScreen] bounds].size.height == 568)?YES:NO
-
+#define GOD_MODE NO
 #define ARC4RANDOM_MAX      0x100000000
 #define CHANCE_OF_DAY       0.7
 #define VELOCITY_FLAP       355//390
@@ -23,13 +19,11 @@
 #define MASS_FLAPPYBIRD     8
 #define GROUND_SPEED        137//136
 #define FLAPPY_GROUND_CONTACT_Y 126
-#define DISTANCE_X_BETWEEN_PIPES 180
-#define DISTANCE_Y_BETWEEN_PIPES 421
-#define MAX_PIPE_Y 235//255
-#define MIN_PIPE_Y 20//130//-10
-#define GOD_MODE NO
+#define DISTANCE_X_BETWEEN_PIPES 206
+#define DISTANCE_Y_BETWEEN_PIPES 106 // 101
+#define MAX_PIPE_Y 500//255 // 235 // 535
+#define MIN_PIPE_Y 170//130//-10 // 20 //150
 #define OFFSET_Y_FOR_IPHONE4S_AND_LESS 60
-//#define SHOW_CHARTBOOST_ADS_AND_MOREGAMES YES
 
 static const uint32_t flappyBirdHeroCategory    =  0x1 << 0;
 static const uint32_t pipeCategory              =  0x1 << 1;
@@ -69,7 +63,7 @@ typedef enum
 @property (strong, nonatomic) SKAction      *curFlappyingAction;
 @property (assign, nonatomic) CGFloat        deviceOffsetOriginY;
 @property (assign, nonatomic) CGFloat        extraHeightForSmallScreen;
-@property (assign, nonatomic) CGFloat        iPadPipeOffset;
+@property (assign, nonatomic) CGFloat        squatScreenPipeSubtraction;
 
 - (void)initForDevice;
 - (void)switchBackground;
@@ -96,7 +90,6 @@ typedef enum
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-//        [YMCPhysicsDebugger init];
         [self initForDevice];
 
         self.currentScore = 0;
@@ -120,32 +113,20 @@ typedef enum
 -(void)initForDevice
 {
 
-    UIUserInterfaceIdiom idiom = UI_USER_INTERFACE_IDIOM();
-    if ( idiom == UIUserInterfaceIdiomPhone )
+    NSLog(@"height %f", self.size.height);
+    // 0.563380 is iPhone SE: short screen 568
+    // 0.462203 is 13 Pro max: long screen 692.336449
+    // 0.461823 is iPhone X: long screen 692.906667
+    CGFloat isLongScreen = 630 < self.size.height;
+    if ( isLongScreen )
     {
-
-        if ( isiPhone5 )
-        {
-
-            self.deviceOffsetOriginY = 0;
-            self.extraHeightForSmallScreen = 0;
-        }
-        else
-        {
-
-//            self.anchorPoint = CGPointMake( 0, -(4 - 3.5 / 4) );
-            self.deviceOffsetOriginY = OFFSET_Y_FOR_IPHONE4S_AND_LESS;
-            self.anchorPoint = CGPointMake( 0, -0.18f );//0.13
-            self.extraHeightForSmallScreen = 25;
-        }
-        
-        self.iPadPipeOffset = 0;
+        self.deviceOffsetOriginY = 0;
+        self.extraHeightForSmallScreen = 0;
     }
-    else if ( idiom == UIUserInterfaceIdiomPad )
+    else
     {
-        
-        [self setSize:CGSizeMake(320, 568)];
-        self.iPadPipeOffset = -35;
+
+        self.squatScreenPipeSubtraction = -100;
     }
 }
 
@@ -516,35 +497,47 @@ typedef enum
     self.pipeUp0 = [SKSpriteNode spriteNodeWithTexture:pipeUpTexture];
     self.pipeUp1 = [SKSpriteNode spriteNodeWithTexture:pipeUpTexture];
     self.pipeUp2 = [SKSpriteNode spriteNodeWithTexture:pipeUpTexture];
-
-
-//    self.pipeUp0.anchorPoint = CGPointZero;
-    [self addPhysicsToPipe:self.pipeUp0];
+    
+    
+    self.pipeUp0.anchorPoint = CGPointMake( 0.5f, 1 );
+    self.pipeUp0.size = CGSizeMake(52, 520);
+    [self addPhysicsToPipe:self.pipeUp0 isUpPipe:YES];
     [self addChild:self.pipeUp0];
+    NSLog( @"Anchor point x is %f, y %f", self.pipeUp0.anchorPoint.x, self.pipeUp0.anchorPoint.y);
 
 //    self.pipeUp1.anchorPoint = CGPointZero;
-    [self addPhysicsToPipe:self.pipeUp1];
+    self.pipeUp1.anchorPoint = CGPointMake( 0.5f, 1 );
+    self.pipeUp1.size = CGSizeMake(52, 520);
+    [self addPhysicsToPipe:self.pipeUp1 isUpPipe:YES];
     [self addChild:self.pipeUp1];
 
 //    self.pipeUp2.anchorPoint = CGPointZero;
-    [self addPhysicsToPipe:self.pipeUp2];
+    self.pipeUp2.anchorPoint = CGPointMake( 0.5f, 1 );
+    self.pipeUp2.size = CGSizeMake(52, 520);
+    [self addPhysicsToPipe:self.pipeUp2 isUpPipe:YES];
     [self addChild:self.pipeUp2];
 
     NSString *pipeDownName = @"pipe_down";
     SKTexture *pipeDownTexture = [[MMGlobal sharedInstance].atlas textureNamed:pipeDownName];
     self.pipeDown0 = [SKSpriteNode spriteNodeWithTexture:pipeDownTexture];
-//    self.pipeDown0.anchorPoint = CGPointZero;
-    [self addPhysicsToPipe:self.pipeDown0];
+    self.pipeDown0.size = CGSizeMake(52, 520);
+//    NSLog( @"width is %f", self.pipeDown0.size.height);
+    self.pipeDown0.anchorPoint = CGPointMake( 0.5f, 0 );
+    [self addPhysicsToPipe:self.pipeDown0 isUpPipe:NO];
     [self addChild:self.pipeDown0];
 
     self.pipeDown1 = [SKSpriteNode spriteNodeWithTexture:pipeDownTexture];
-//    self.pipeDown1.anchorPoint = CGPointZero;
-    [self addPhysicsToPipe:self.pipeDown1];
+    self.pipeDown1.size = CGSizeMake(52, 520);
+
+    self.pipeDown1.anchorPoint = CGPointMake( 0.5f, 0 );
+    [self addPhysicsToPipe:self.pipeDown1 isUpPipe:NO];
     [self addChild:self.pipeDown1];
 
     self.pipeDown2 = [SKSpriteNode spriteNodeWithTexture:pipeDownTexture];
-//    self.pipeDown2.anchorPoint = CGPointZero;
-    [self addPhysicsToPipe:self.pipeDown2];
+    self.pipeDown2.size = CGSizeMake(52, 520);
+
+    self.pipeDown2.anchorPoint = CGPointMake( 0.5f, 0 );
+    [self addPhysicsToPipe:self.pipeDown2 isUpPipe:NO];
     [self addChild:self.pipeDown2];
 }
 
@@ -558,14 +551,18 @@ typedef enum
     self.pipeUp2.position = CGPointMake( self.pipeUp1.position.x + DISTANCE_X_BETWEEN_PIPES, pipe2PositionY );
     self.pipeDown0.position = CGPointMake( self.pipeUp0.position.x, DISTANCE_Y_BETWEEN_PIPES + pipe0PositionY);
     self.pipeDown1.position = CGPointMake( self.pipeUp1.position.x, DISTANCE_Y_BETWEEN_PIPES + pipe1PositionY);
-    self.pipeDown2.position = CGPointMake( self.pipeUp2.position.x, DISTANCE_Y_BETWEEN_PIPES + pipe2PositionY );
+    self.pipeDown2.position = CGPointMake( self.pipeUp2.position.x, DISTANCE_Y_BETWEEN_PIPES + pipe2PositionY);
 }
 
--(void)addPhysicsToPipe:(SKSpriteNode *)aPipe
+-(void)addPhysicsToPipe:(SKSpriteNode *)aPipe isUpPipe:(BOOL)isUpPipe
 {
     if ( !GOD_MODE )
     {
-        aPipe.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:aPipe.size];
+        
+        CGFloat centerY = aPipe.size.height / 2;
+        centerY *= isUpPipe ? -1 : 1;
+        CGPoint center = CGPointMake( 0, centerY);
+        aPipe.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:aPipe.size center:center];
         aPipe.physicsBody.dynamic = NO;
         aPipe.physicsBody.categoryBitMask = pipeCategory;
         aPipe.physicsBody.contactTestBitMask = flappyBirdHeroCategory;
@@ -654,16 +651,16 @@ typedef enum
 -(CGFloat)randPipePositionY
 {
 
-//    CGFloat iPadRangeAdjuster = ( self.iPadPipeOffset != 0 ) ? 20 : MIN_PIPE_Y;
-    return ((CGFloat)(arc4random_uniform(MAX_PIPE_Y - MIN_PIPE_Y) + MIN_PIPE_Y)) + self.iPadPipeOffset;
-//    return 20;
+    CGFloat maxPipeY = MAX_PIPE_Y + self.squatScreenPipeSubtraction;
+    return ((CGFloat)(arc4random_uniform(maxPipeY - MIN_PIPE_Y) + MIN_PIPE_Y)) ;
+
 }
 
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
 
-//    NSLog( @"contact -> %@", contact );
+    NSLog( @"contact -> %@", contact );
     [self.sceneDelegate shakeScreen];
     [[OALSimpleAudio sharedInstance] playEffect:@"sfx_hit.caf"];
     [[OALSimpleAudio sharedInstance] playEffect:@"sfx_die.caf"];

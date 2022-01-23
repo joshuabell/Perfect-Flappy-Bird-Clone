@@ -18,12 +18,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-//    [Flurry setLogLevel:FlurryLogLevelNone];
-
-//    [Flurry setCrashReportingEnabled:YES];
-    //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
-//    [Flurry startSession:@"..."];
-    //your code
     return YES;
 }
 							

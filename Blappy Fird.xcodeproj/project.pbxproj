@@ -21,7 +21,6 @@
 		034978F818A9B70000D2AC1F /* MMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 034978F718A9B70000D2AC1F /* MMAppDelegate.m */; };
 		034978FE18A9B70000D2AC1F /* MMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 034978FD18A9B70000D2AC1F /* MMViewController.m */; };
 		0349790118A9B70000D2AC1F /* MMMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349790018A9B70000D2AC1F /* MMMyScene.m */; };
-		0349790318A9B70000D2AC1F /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 0349790218A9B70000D2AC1F /* Spaceship.png */; };
 		0349790518A9B70000D2AC1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0349790418A9B70000D2AC1F /* Images.xcassets */; };
 		0349790C18A9B70000D2AC1F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0349790B18A9B70000D2AC1F /* XCTest.framework */; };
 		0349790D18A9B70000D2AC1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 034978E518A9B70000D2AC1F /* Foundation.framework */; };
@@ -52,6 +51,7 @@
 		0349797818A9B88E00D2AC1F /* sfx_point.aif in Resources */ = {isa = PBXBuildFile; fileRef = 0349797318A9B88E00D2AC1F /* sfx_point.aif */; };
 		0349797918A9B88E00D2AC1F /* sfx_swooshing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0349797418A9B88E00D2AC1F /* sfx_swooshing.caf */; };
 		0349798118AA89E700D2AC1F /* MMGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0349798018AA89E700D2AC1F /* MMGlobal.m */; };
+		034D9830279A01DB00A8E186 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034D982F279A01DB00A8E186 /* Launch Screen.storyboard */; };
 		0376133518AEF00900D8D59D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0376133418AEF00900D8D59D /* SystemConfiguration.framework */; };
 		0376133718AEF02600D8D59D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0376133618AEF02600D8D59D /* Security.framework */; };
 		0376137B18AF45CE00D8D59D /* OALAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0376133C18AF45CE00D8D59D /* OALAction.m */; };
@@ -148,7 +148,6 @@
 		034978FD18A9B70000D2AC1F /* MMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMViewController.m; sourceTree = "<group>"; };
 		034978FF18A9B70000D2AC1F /* MMMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMMyScene.h; sourceTree = "<group>"; };
 		0349790018A9B70000D2AC1F /* MMMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMMyScene.m; sourceTree = "<group>"; };
-		0349790218A9B70000D2AC1F /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		0349790418A9B70000D2AC1F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0349790A18A9B70000D2AC1F /* Blappy FirdTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Blappy FirdTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0349790B18A9B70000D2AC1F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -180,6 +179,7 @@
 		0349797418A9B88E00D2AC1F /* sfx_swooshing.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sfx_swooshing.caf; path = Resources/sounds/sfx_swooshing.caf; sourceTree = "<group>"; };
 		0349797F18AA89E700D2AC1F /* MMGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMGlobal.h; path = global/MMGlobal.h; sourceTree = "<group>"; };
 		0349798018AA89E700D2AC1F /* MMGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMGlobal.m; path = global/MMGlobal.m; sourceTree = "<group>"; };
+		034D982F279A01DB00A8E186 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0376133418AEF00900D8D59D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0376133618AEF02600D8D59D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0376133A18AF45CE00D8D59D /* OALAction+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OALAction+Private.h"; sourceTree = "<group>"; };
@@ -378,13 +378,13 @@
 			isa = PBXGroup;
 			children = (
 				030420CF19272202004F07D7 /* Main.storyboard */,
+				034D982F279A01DB00A8E186 /* Launch Screen.storyboard */,
 				034978F618A9B70000D2AC1F /* MMAppDelegate.h */,
 				034978F718A9B70000D2AC1F /* MMAppDelegate.m */,
 				034978FC18A9B70000D2AC1F /* MMViewController.h */,
 				034978FD18A9B70000D2AC1F /* MMViewController.m */,
 				034978FF18A9B70000D2AC1F /* MMMyScene.h */,
 				0349790018A9B70000D2AC1F /* MMMyScene.m */,
-				0349790218A9B70000D2AC1F /* Spaceship.png */,
 				0349790418A9B70000D2AC1F /* Images.xcassets */,
 				0349797E18AA898700D2AC1F /* global */,
 				0349792118A9B71000D2AC1F /* Resources */,
@@ -717,7 +717,8 @@
 				ORGANIZATIONNAME = Machine;
 				TargetAttributes = {
 					034978E118A9B70000D2AC1F = {
-						DevelopmentTeam = 3G5C2SV92X;
+						DevelopmentTeam = 375R85227Y;
+						ProvisioningStyle = Automatic;
 					};
 					0349790918A9B70000D2AC1F = {
 						TestTargetID = 034978E118A9B70000D2AC1F;
@@ -729,6 +730,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -763,7 +765,6 @@
 				0349796318A9B85E00D2AC1F /* AppIcon72x72@2x~ipad.png in Resources */,
 				030420D119272202004F07D7 /* Main.storyboard in Resources */,
 				03F22CD4192DB557008760A0 /* Default@2x.png in Resources */,
-				0349790318A9B70000D2AC1F /* Spaceship.png in Resources */,
 				03F22CDD192DB557008760A0 /* LaunchImage-Landscape~ipad.png in Resources */,
 				03EED95D1938443A0089206C /* README.md in Resources */,
 				0349796118A9B85E00D2AC1F /* AppIcon57x57@2x.png in Resources */,
@@ -776,6 +777,7 @@
 				03F22CDC192DB557008760A0 /* LaunchImage-Landscape@2x~ipad.png in Resources */,
 				0349796718A9B85E00D2AC1F /* atlas.png in Resources */,
 				0349796418A9B85E00D2AC1F /* AppIcon72x72~ipad.png in Resources */,
+				034D9830279A01DB00A8E186 /* Launch Screen.storyboard in Resources */,
 				0349797618A9B88E00D2AC1F /* sfx_die.caf in Resources */,
 				0349796218A9B85E00D2AC1F /* AppIcon60x60@2x.png in Resources */,
 				03F22CDF192DB557008760A0 /* LaunchImage-Portrait~ipad.png in Resources */,
@@ -982,21 +984,25 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 375R85227Y;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Flappy Bird/Blappy Fird-Prefix.pch";
 				INFOPLIST_FILE = "Flappy Bird/Blappy Fird-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/\"Flappy Bird\"",
 					"$(PROJECT_DIR)/\"Flappy Bird/libs/Chartboost\"",
 					"$(PROJECT_DIR)/\"Flappy Bird/libs/Flurry\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.joshuabell.${PRODUCT_NAME:rfc1034identifier}";
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "ua.josh.Flappy-Bird";
 				PRODUCT_NAME = "Blappy Fird";
-				PROVISIONING_PROFILE = "fae770d7-f104-4330-a228-80d7cc976854";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1009,21 +1015,25 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 375R85227Y;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Flappy Bird/Blappy Fird-Prefix.pch";
 				INFOPLIST_FILE = "Flappy Bird/Blappy Fird-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/\"Flappy Bird\"",
 					"$(PROJECT_DIR)/\"Flappy Bird/libs/Chartboost\"",
 					"$(PROJECT_DIR)/\"Flappy Bird/libs/Flurry\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.joshuabell.${PRODUCT_NAME:rfc1034identifier}";
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = "ua.josh.Flappy-Bird";
 				PRODUCT_NAME = "Blappy Fird";
-				PROVISIONING_PROFILE = "fae770d7-f104-4330-a228-80d7cc976854";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
